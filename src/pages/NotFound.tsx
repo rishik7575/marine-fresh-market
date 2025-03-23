@@ -31,13 +31,13 @@ const NotFound = () => {
         <div className="mt-8 text-center">
           <h2 className="text-gray-800 text-lg font-medium mb-4">You might be interested in:</h2>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link to="/" className="px-4 py-2 bg-gray-100 rounded-md text-gray-700 transition-colors hover:bg-gray-200">
+            <Link to="/seafood" className="px-4 py-2 bg-gray-100 rounded-md text-gray-700 transition-colors hover:bg-gray-200">
               Fresh Seafood
             </Link>
-            <Link to="/" className="px-4 py-2 bg-gray-100 rounded-md text-gray-700 transition-colors hover:bg-gray-200">
+            <Link to="/sustainable-fishing" className="px-4 py-2 bg-gray-100 rounded-md text-gray-700 transition-colors hover:bg-gray-200">
               Sustainable Fishing
             </Link>
-            <Link to="/" className="px-4 py-2 bg-gray-100 rounded-md text-gray-700 transition-colors hover:bg-gray-200">
+            <Link to="/marine-supplies" className="px-4 py-2 bg-gray-100 rounded-md text-gray-700 transition-colors hover:bg-gray-200">
               Marine Supplies
             </Link>
           </div>

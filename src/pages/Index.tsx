@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   // Products data
@@ -195,18 +196,22 @@ const Index = () => {
       <header className="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-4">
-            <a href="#" className="text-xl font-semibold text-gray-900">MarineFresh</a>
+            <Link to="/" className="text-xl font-semibold text-gray-900">MarineFresh</Link>
             
             <nav className="hidden md:block">
               <ul className="flex space-x-8">
-                <li><a href="#" className="relative py-2 text-gray-600 hover:text-gray-900 transition-colors">Home</a></li>
-                <li><a href="#" className="relative py-2 text-gray-600 hover:text-gray-900 transition-colors">Sustainable Fishing</a></li>
                 <li>
-                  <a href="#" className="relative py-2 text-gray-900 font-medium transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-gray-900">
-                    Seafood
-                  </a>
+                  <Link to="/" className="relative py-2 text-gray-900 font-medium transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-gray-900">
+                    Home
+                  </Link>
                 </li>
-                <li><a href="#" className="relative py-2 text-gray-600 hover:text-gray-900 transition-colors">Marine Supplies</a></li>
+                <li><Link to="/sustainable-fishing" className="relative py-2 text-gray-600 hover:text-gray-900 transition-colors">Sustainable Fishing</Link></li>
+                <li>
+                  <Link to="/seafood" className="relative py-2 text-gray-900 font-medium transition-colors">
+                    Seafood
+                  </Link>
+                </li>
+                <li><Link to="/marine-supplies" className="relative py-2 text-gray-600 hover:text-gray-900 transition-colors">Marine Supplies</Link></li>
               </ul>
             </nav>
             
@@ -245,10 +250,10 @@ const Index = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-100 py-2 px-4">
             <ul className="space-y-3">
-              <li><a href="#" className="block py-2 text-gray-600">Home</a></li>
-              <li><a href="#" className="block py-2 text-gray-600">Sustainable Fishing</a></li>
-              <li><a href="#" className="block py-2 text-gray-900 font-medium">Seafood</a></li>
-              <li><a href="#" className="block py-2 text-gray-600">Marine Supplies</a></li>
+              <li><Link to="/" className="block py-2 text-gray-900 font-medium">Home</Link></li>
+              <li><Link to="/sustainable-fishing" className="block py-2 text-gray-600">Sustainable Fishing</Link></li>
+              <li><Link to="/seafood" className="block py-2 text-gray-600">Seafood</Link></li>
+              <li><Link to="/marine-supplies" className="block py-2 text-gray-600">Marine Supplies</Link></li>
             </ul>
           </div>
         )}
@@ -557,3 +562,4 @@ const Index = () => {
 };
 
 export default Index;
+
