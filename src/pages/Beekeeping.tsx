@@ -1,8 +1,95 @@
-import React from "react";
+import React, { useState } from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
+import ProductCard from "../components/ProductCard";
+import Cart from "../components/Cart";
+import { Button } from "@/components/ui/button";
+import { Product } from "../components/ProductCard";
 
 const Beekeeping = () => {
+  const [activeCategory, setActiveCategory] = useState<string>("All");
+  
+  const beekeepingProducts: Product[] = [
+    {
+      id: "bee-smoker",
+      name: "Professional Bee Smoker",
+      description: "High-quality stainless steel smoker with heat shield, perfect for calming bees during hive inspections.",
+      price: 35.99,
+      image: "https://images.unsplash.com/photo-1591878840765-976ad1a421ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      category: "Equipment"
+    },
+    {
+      id: "bee-suit",
+      name: "Full Beekeeper Suit",
+      description: "Complete protection with durable cotton-polyester blend, includes veil and gloves for safe beekeeping.",
+      price: 89.99,
+      image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      category: "Equipment"
+    },
+    {
+      id: "queen-rearing-kit",
+      name: "Queen Rearing Kit",
+      description: "Complete set for breeding and raising healthy queen bees, includes grafting tools and queen cups.",
+      price: 64.50,
+      image: "https://images.unsplash.com/photo-1584633155097-19e7753dba76?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      category: "Equipment"
+    },
+    {
+      id: "beginners-guide",
+      name: "Beekeeping for Beginners Book",
+      description: "Comprehensive guide covering all aspects of starting and maintaining your first beehive.",
+      price: 24.95,
+      image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      category: "Education"
+    },
+    {
+      id: "hive-tool",
+      name: "Stainless Steel Hive Tool",
+      description: "Essential tool for every beekeeper, perfect for prying apart hive components and scraping away wax and propolis.",
+      price: 15.99,
+      image: "https://images.unsplash.com/photo-1595753101571-546b77234e52?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      category: "Equipment"
+    },
+    {
+      id: "langstroth-hive",
+      name: "Langstroth Bee Hive Kit",
+      description: "Complete 10-frame Langstroth hive with two deep brood boxes, frames, foundation, and telescoping cover.",
+      price: 189.99,
+      image: "https://images.unsplash.com/photo-1587049352851-8d4e89133924?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      category: "Hives"
+    },
+    {
+      id: "bee-brush",
+      name: "Soft Bristle Bee Brush",
+      description: "Gentle brush designed to safely remove bees from frames during honey harvesting without harming them.",
+      price: 9.95,
+      image: "https://images.unsplash.com/photo-1564650211163-21049f1b683a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      category: "Equipment"
+    },
+    {
+      id: "online-course",
+      name: "Beekeeping Masterclass",
+      description: "Comprehensive online course covering everything from hive setup to advanced honey harvesting techniques.",
+      price: 129.00,
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      category: "Education"
+    },
+    {
+      id: "mite-treatment",
+      name: "Organic Varroa Mite Treatment",
+      description: "Natural, organic treatment to control varroa mites without contaminating honey or harming bees.",
+      price: 28.50,
+      image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      category: "Health"
+    }
+  ];
+
+  const categories = ["All", ...Array.from(new Set(beekeepingProducts.map(product => product.category)))];
+  
+  const filteredProducts = activeCategory === "All" 
+    ? beekeepingProducts 
+    : beekeepingProducts.filter(product => product.category === activeCategory);
+
   const beekeepingTips = [
     {
       id: 'start-small',
@@ -72,8 +159,8 @@ const Beekeeping = () => {
   return (
     <div className="min-h-screen bg-white font-sans">
       <Navigation />
+      <Cart />
       
-      {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[400px] flex items-center mt-16">
         <div className="absolute inset-0 z-0">
           <img 
@@ -92,15 +179,42 @@ const Beekeeping = () => {
             <p className="text-lg md:text-xl opacity-90 mb-6">
               Discover the rewarding world of beekeeping and learn how to maintain healthy, productive colonies.
             </p>
-            <button className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+            <Button className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-6 h-auto rounded-lg font-medium transition-colors">
               Start Your Journey
-            </button>
+            </Button>
           </div>
         </div>
       </section>
       
-      {/* Intro Section */}
       <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-semibold mb-8 text-center text-amber-800">Beekeeping Products</h2>
+          
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {categories.map(category => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  activeCategory === category 
+                    ? "bg-amber-600 text-white" 
+                    : "bg-amber-100 text-amber-800 hover:bg-amber-200"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProducts.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      <section className="py-16 bg-amber-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-semibold mb-6 text-amber-800">Why Keep Bees?</h2>
@@ -114,8 +228,7 @@ const Beekeeping = () => {
         </div>
       </section>
       
-      {/* Beekeeping Tips */}
-      <section className="py-16 bg-amber-50">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-semibold mb-12 text-center text-amber-800">Essential Beekeeping Tips</h2>
           
@@ -131,8 +244,7 @@ const Beekeeping = () => {
         </div>
       </section>
       
-      {/* Courses Section */}
-      <section className="py-16">
+      <section className="py-16 bg-amber-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-semibold mb-12 text-center text-amber-800">Beekeeping Courses</h2>
           
@@ -165,8 +277,7 @@ const Beekeeping = () => {
         </div>
       </section>
       
-      {/* FAQ Section */}
-      <section className="py-16 bg-amber-50">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-semibold mb-12 text-center text-amber-800">Frequently Asked Questions</h2>
           
@@ -202,7 +313,6 @@ const Beekeeping = () => {
         </div>
       </section>
       
-      {/* CTA Section */}
       <section className="py-16 bg-amber-800 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-semibold mb-6">Ready to Start Your Beekeeping Journey?</h2>
