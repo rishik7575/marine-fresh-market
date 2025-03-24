@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
@@ -5,52 +6,52 @@ const Index = () => {
   // Products data
   const products = [
     {
-      id: 'salmon-fresh',
-      name: 'Fresh Salmon',
+      id: 'raw-honey',
+      name: 'Raw Wildflower Honey',
+      price: 12.99,
+      image: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      category: 'Honey',
+      description: 'Pure, unfiltered wildflower honey harvested from our own beehives. Rich in natural enzymes and antioxidants.'
+    },
+    {
+      id: 'clover-honey',
+      name: 'Clover Honey',
+      price: 10.99,
+      image: 'https://images.unsplash.com/photo-1596432196143-8c61bd8a69b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      category: 'Honey',
+      description: 'Mild, sweet clover honey with a light amber color. Perfect for tea, baking, or enjoying straight from the jar.'
+    },
+    {
+      id: 'bee-smoker',
+      name: 'Beekeeping Smoker',
+      price: 35.99,
+      image: 'https://images.unsplash.com/photo-1591878840765-976ad1a421ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      category: 'Equipment',
+      description: 'Professional-grade stainless steel bee smoker with heat shield. Essential tool for any beekeeper.'
+    },
+    {
+      id: 'beekeeper-suit',
+      name: 'Full Beekeeper Suit',
+      price: 89.99,
+      image: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      category: 'Equipment',
+      description: 'Complete beekeeper suit with veil, gloves, and durable cotton-polyester blend fabric for protection and comfort.'
+    },
+    {
+      id: 'brood-box',
+      name: 'Langstroth Brood Box',
+      price: 42.99,
+      image: 'https://images.unsplash.com/photo-1564182842519-8a3b2af3e228?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      category: 'Hives',
+      description: 'Standard 10-frame Langstroth brood box made from premium pine. Includes frames with wax foundation.'
+    },
+    {
+      id: 'bee-supplement',
+      name: 'Bee Supplement Formula',
       price: 18.99,
-      image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Fish',
-      description: 'Premium wild-caught salmon, rich in omega-3 fatty acids with no preservatives.'
-    },
-    {
-      id: 'tuna-steak',
-      name: 'Yellowfin Tuna Steak',
-      price: 24.99,
-      image: 'https://images.unsplash.com/photo-1596046592492-f391684781d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Fish',
-      description: 'Premium sushi-grade tuna steaks, perfect for grilling or serving as sashimi.'
-    },
-    {
-      id: 'jumbo-shrimp',
-      name: 'Jumbo Shrimp',
-      price: 21.99,
-      image: 'https://images.unsplash.com/photo-1565280654386-923b2e8db8ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Shellfish',
-      description: 'Large, succulent shrimp, perfect for grilling, cocktails, or adding to pasta dishes.'
-    },
-    {
-      id: 'live-lobster',
-      name: 'Live Maine Lobster',
-      price: 32.99,
-      image: 'https://images.unsplash.com/photo-1553659971-f01207815844?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Shellfish',
-      description: 'Fresh live Maine lobsters, caught daily and delivered straight to your door.'
-    },
-    {
-      id: 'oyster-dozen',
-      name: 'Fresh Oysters',
-      price: 26.99,
-      image: 'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Shellfish',
-      description: 'Fresh caught oysters, perfect for serving raw on the half shell. Dozen pack.'
-    },
-    {
-      id: 'seaweed-salad',
-      name: 'Seaweed Salad',
-      price: 8.99,
-      image: 'https://images.unsplash.com/photo-1561895108-625c6de09faf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'Specialty',
-      description: 'Traditional Japanese seaweed salad, seasoned with sesame oil and spices.'
+      image: 'https://images.unsplash.com/photo-1610213988078-8c98614a9d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      category: 'Health',
+      description: 'Nutritional supplement for honeybees to promote colony health and increase honey production.'
     }
   ];
 
@@ -196,28 +197,28 @@ const Index = () => {
       <header className="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-4">
-            <Link to="/" className="text-xl font-semibold text-gray-900">MarineFresh</Link>
+            <Link to="/" className="text-xl font-semibold text-amber-700">SweetHoney</Link>
             
             <nav className="hidden md:block">
               <ul className="flex space-x-8">
                 <li>
-                  <Link to="/" className="relative py-2 text-gray-900 font-medium transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-gray-900">
+                  <Link to="/" className="relative py-2 text-amber-700 font-medium transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-amber-700">
                     Home
                   </Link>
                 </li>
-                <li><Link to="/sustainable-fishing" className="relative py-2 text-gray-600 hover:text-gray-900 transition-colors">Sustainable Fishing</Link></li>
+                <li><Link to="/beekeeping" className="relative py-2 text-gray-600 hover:text-amber-700 transition-colors">Beekeeping</Link></li>
                 <li>
-                  <Link to="/seafood" className="relative py-2 text-gray-900 font-medium transition-colors">
-                    Seafood
+                  <Link to="/honey-products" className="relative py-2 text-gray-600 hover:text-amber-700 transition-colors">
+                    Honey Products
                   </Link>
                 </li>
-                <li><Link to="/marine-supplies" className="relative py-2 text-gray-600 hover:text-gray-900 transition-colors">Marine Supplies</Link></li>
+                <li><Link to="/bee-supplies" className="relative py-2 text-gray-600 hover:text-amber-700 transition-colors">Bee Supplies</Link></li>
               </ul>
             </nav>
             
             <div className="flex items-center">
               <button 
-                className="relative p-2 text-gray-600 hover:text-gray-900 transition-colors mr-2"
+                className="relative p-2 text-gray-600 hover:text-amber-700 transition-colors mr-2"
                 onClick={() => setIsCartOpen(true)}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -226,14 +227,14 @@ const Index = () => {
                   <path d="M16 10a4 4 0 0 1-8 0"/>
                 </svg>
                 {itemCount > 0 && (
-                  <span className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-black rounded-full">
+                  <span className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-amber-700 rounded-full">
                     {itemCount}
                   </span>
                 )}
               </button>
               
               <button 
-                className="p-2 text-gray-600 hover:text-gray-900 transition-colors md:hidden"
+                className="p-2 text-gray-600 hover:text-amber-700 transition-colors md:hidden"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -250,10 +251,10 @@ const Index = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-100 py-2 px-4">
             <ul className="space-y-3">
-              <li><Link to="/" className="block py-2 text-gray-900 font-medium">Home</Link></li>
-              <li><Link to="/sustainable-fishing" className="block py-2 text-gray-600">Sustainable Fishing</Link></li>
-              <li><Link to="/seafood" className="block py-2 text-gray-600">Seafood</Link></li>
-              <li><Link to="/marine-supplies" className="block py-2 text-gray-600">Marine Supplies</Link></li>
+              <li><Link to="/" className="block py-2 text-amber-700 font-medium">Home</Link></li>
+              <li><Link to="/beekeeping" className="block py-2 text-gray-600">Beekeeping</Link></li>
+              <li><Link to="/honey-products" className="block py-2 text-gray-600">Honey Products</Link></li>
+              <li><Link to="/bee-supplies" className="block py-2 text-gray-600">Bee Supplies</Link></li>
             </ul>
           </div>
         )}
@@ -263,8 +264,8 @@ const Index = () => {
       <section className="relative h-[40vh] min-h-[300px] flex items-center mt-16">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
-            alt="Fresh seafood" 
+            src="https://images.unsplash.com/photo-1631552814942-6eb178b8b5b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+            alt="Bee farm" 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/30"></div>
@@ -273,10 +274,10 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-lg text-white">
             <h1 className="text-3xl md:text-5xl font-semibold mb-4 animate-fade-in">
-              Fresh Seafood
+              Fresh Honey & Bee Supplies
             </h1>
             <p className="text-lg md:text-xl opacity-90 animate-fade-in-delay">
-              Explore our selection of premium seafood, including fish, shellfish, and specialty marine products.
+              Explore our selection of premium honey products and beekeeping supplies from our sustainable, family-owned bee farm.
             </p>
           </div>
         </div>
@@ -288,7 +289,7 @@ const Index = () => {
           <div className="flex flex-wrap gap-3">
             <button 
               className={`px-4 py-2 rounded-full transition-all ${
-                category === 'All' ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                category === 'All' ? 'bg-amber-700 text-white' : 'bg-amber-50 text-amber-800 hover:bg-amber-100'
               }`}
               onClick={() => handleCategoryChange('All')}
             >
@@ -296,27 +297,35 @@ const Index = () => {
             </button>
             <button 
               className={`px-4 py-2 rounded-full transition-all ${
-                category === 'Fish' ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                category === 'Honey' ? 'bg-amber-700 text-white' : 'bg-amber-50 text-amber-800 hover:bg-amber-100'
               }`}
-              onClick={() => handleCategoryChange('Fish')}
+              onClick={() => handleCategoryChange('Honey')}
             >
-              Fish
+              Honey
             </button>
             <button 
               className={`px-4 py-2 rounded-full transition-all ${
-                category === 'Shellfish' ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                category === 'Equipment' ? 'bg-amber-700 text-white' : 'bg-amber-50 text-amber-800 hover:bg-amber-100'
               }`}
-              onClick={() => handleCategoryChange('Shellfish')}
+              onClick={() => handleCategoryChange('Equipment')}
             >
-              Shellfish
+              Equipment
             </button>
             <button 
               className={`px-4 py-2 rounded-full transition-all ${
-                category === 'Specialty' ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                category === 'Health' ? 'bg-amber-700 text-white' : 'bg-amber-50 text-amber-800 hover:bg-amber-100'
               }`}
-              onClick={() => handleCategoryChange('Specialty')}
+              onClick={() => handleCategoryChange('Health')}
             >
-              Specialty
+              Health
+            </button>
+            <button 
+              className={`px-4 py-2 rounded-full transition-all ${
+                category === 'Hives' ? 'bg-amber-700 text-white' : 'bg-amber-50 text-amber-800 hover:bg-amber-100'
+              }`}
+              onClick={() => handleCategoryChange('Hives')}
+            >
+              Hives
             </button>
           </div>
         </div>
@@ -325,7 +334,7 @@ const Index = () => {
       {/* Products Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-semibold mb-8">{category} Seafood</h2>
+          <h2 className="text-2xl font-semibold mb-8">{category === 'All' ? 'All Products' : `${category} Products`}</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map(product => (
@@ -360,7 +369,7 @@ const Index = () => {
                   <p className="text-sm text-gray-600 mb-4 line-clamp-2">{product.description}</p>
                   
                   <button 
-                    className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all duration-300 active:scale-[0.98]"
+                    className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-amber-700 text-white rounded-lg hover:bg-amber-600 transition-all duration-300 active:scale-[0.98]"
                     onClick={() => addToCart(product.id)}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -373,6 +382,58 @@ const Index = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* About Section */}
+      <section className="py-12 bg-amber-50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="rounded-xl overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1587327903256-2c89a6c621de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                alt="Beekeeper with beehives" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            
+            <div className="flex flex-col justify-center">
+              <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-amber-800">Our Sustainable Beekeeping Practices</h2>
+              
+              <p className="text-gray-700 mb-4">
+                At SweetHoney, we believe in responsible beekeeping practices that support healthy bee populations 
+                and produce the highest quality honey. Our family-owned operation has been practicing sustainable 
+                beekeeping for over three generations.
+              </p>
+              
+              <div className="bg-white p-4 rounded-lg mb-4">
+                <h3 className="font-medium text-lg mb-2 text-amber-800">Our Commitments</h3>
+                <ul className="space-y-2">
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">✓</span>
+                    <span>We never use harmful pesticides or chemicals near our hives</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">✓</span>
+                    <span>We leave adequate honey for bees to sustain themselves through winter</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">✓</span>
+                    <span>We provide diverse native plant habitats for our bees</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-amber-600 mr-2">✓</span>
+                    <span>We practice regular hive maintenance and health monitoring</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <p className="text-gray-700">
+                Our commitment to sustainable beekeeping ensures that we can continue to offer 
+                the purest honey products while supporting the crucial role bees play in our ecosystem.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -424,7 +485,7 @@ const Index = () => {
               <h3 className="text-xl font-medium mb-2">Your cart is empty</h3>
               <p className="text-gray-600 mb-6">Add some products to your cart and they will appear here</p>
               <button 
-                className="px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all duration-300 hover:scale-105 active:scale-95"
+                className="px-6 py-2 bg-amber-700 text-white rounded-lg hover:bg-amber-600 transition-all duration-300 hover:scale-105 active:scale-95"
                 onClick={() => setIsCartOpen(false)}
               >
                 Continue Shopping
@@ -514,7 +575,7 @@ const Index = () => {
           </div>
           
           <button 
-            className="w-full py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            className="w-full py-3 bg-amber-700 text-white rounded-lg font-medium hover:bg-amber-600 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
             onClick={handleCheckout}
             disabled={cart.length === 0}
           >
@@ -562,4 +623,3 @@ const Index = () => {
 };
 
 export default Index;
-
