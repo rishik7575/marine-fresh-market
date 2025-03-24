@@ -1,0 +1,1601 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet Buzz Honey Farm</title>
+  <meta name="description" content="Quality organic honey and bee products from our sustainable bee farm" />
+  
+  <style>
+    /* Base styles */
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 36 100% 10%;
+      --primary: 36 100% 50%;
+      --primary-foreground: 36 100% 10%;
+      --secondary: 48 100% 96%;
+      --secondary-foreground: 36 100% 10%;
+      --muted: 48 30% 96%;
+      --muted-foreground: 36 5% 40%;
+      --border: 36 30% 90%;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: white;
+      color: hsl(36 100% 10%);
+      line-height: 1.6;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    img {
+      max-width: 100%;
+    }
+    
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .min-h-screen {
+      min-height: 100vh;
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 40;
+      transition: all 0.3s;
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+    
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: hsl(36 100% 10%);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo svg {
+      color: hsl(36 100% 50%);
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    nav a {
+      position: relative;
+      padding: 0.5rem 0;
+      color: hsl(36 5% 40%);
+      transition: color 0.3s;
+    }
+    
+    nav a:hover {
+      color: hsl(36 100% 10%);
+    }
+    
+    nav a.active {
+      font-weight: 500;
+      color: hsl(36 100% 10%);
+    }
+    
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: hsl(36 100% 50%);
+    }
+    
+    .mobile-menu {
+      display: none;
+    }
+    
+    .cart-button {
+      position: relative;
+      padding: 0.5rem;
+      color: hsl(36 5% 40%);
+      transition: color 0.3s;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+    
+    .cart-button:hover {
+      color: hsl(36 100% 10%);
+    }
+    
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      background-color: hsl(36 100% 50%);
+      color: white;
+      border-radius: 50%;
+    }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 80vh;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      margin-top: 4rem;
+    }
+    
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 32rem;
+      color: white;
+    }
+    
+    .hero-title {
+      font-size: 2.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    .hero-description {
+      font-size: 1.125rem;
+      opacity: 0.9;
+      animation: fadeIn 0.6s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+    
+    .hero-button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: hsl(36 100% 50%);
+      color: white;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: all 0.3s;
+      animation: fadeIn 0.6s ease-out 0.4s forwards;
+      opacity: 0;
+    }
+    
+    .hero-button:hover {
+      background-color: hsl(36 100% 45%);
+      transform: translateY(-2px);
+    }
+    
+    /* Filter Section */
+    .filter-section {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid hsl(36 30% 90%);
+    }
+    
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    
+    .filter-button {
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background-color: hsl(48 30% 96%);
+      color: hsl(36 5% 40%);
+      border: none;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .filter-button:hover {
+      background-color: hsl(48 30% 90%);
+    }
+    
+    .filter-button.active {
+      background-color: hsl(36 100% 10%);
+      color: white;
+    }
+    
+    /* Products Section */
+    .section {
+      padding: 3rem 0;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+    
+    .product-card {
+      overflow: hidden;
+      border-radius: 0.75rem;
+      background-color: white;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .product-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.75rem 0.75rem 0 0;
+      padding-top: 75%;
+    }
+    
+    .product-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+    
+    .product-info {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+    }
+    
+    .product-title {
+      font-size: 1.125rem;
+      font-weight: 500;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    
+    .product-price {
+      font-weight: 600;
+    }
+    
+    .product-description {
+      font-size: 0.875rem;
+      color: hsl(36 5% 40%);
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+    
+    .product-button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1rem;
+      background-color: hsl(36 100% 50%);
+      color: white;
+      border-radius: 0.5rem;
+      border: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .product-button:hover {
+      background-color: hsl(36 100% 45%);
+    }
+    
+    .product-button:active {
+      transform: scale(0.98);
+    }
+    
+    /* About Section */
+    .about-section {
+      padding: 4rem 0;
+      background-color: hsl(48 100% 96%);
+    }
+    
+    .about-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .about-image {
+      border-radius: 0.75rem;
+      overflow: hidden;
+      height: 100%;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .about-title {
+      font-size: 1.875rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: hsl(36 100% 10%);
+    }
+    
+    .about-text {
+      margin-bottom: 1.5rem;
+      color: hsl(36 5% 40%);
+    }
+    
+    .about-features {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .feature-icon {
+      flex-shrink: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      background-color: hsl(36 100% 95%);
+      color: hsl(36 100% 50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .feature-content h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    
+    .feature-content p {
+      font-size: 0.875rem;
+      color: hsl(36 5% 40%);
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: hsl(36 20% 95%);
+      padding: 3rem 0;
+      color: hsl(36 5% 40%);
+    }
+    
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+    
+    .footer-section h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: hsl(36 100% 10%);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links a {
+      color: hsl(36 5% 40%);
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: hsl(36 100% 50%);
+    }
+    
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid hsl(36 30% 90%);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    .footer-bottom-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-link {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 9999px;
+      background-color: hsl(36 100% 95%);
+      color: hsl(36 5% 40%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    
+    .social-link:hover {
+      background-color: hsl(36 100% 50%);
+      color: white;
+    }
+
+    /* Cart Panel */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 40;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    
+    .cart-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      max-width: 24rem;
+      background-color: white;
+      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .cart-panel.open {
+      transform: translateX(0);
+    }
+    
+    .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid hsl(36 30% 90%);
+    }
+    
+    .cart-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .cart-close {
+      padding: 0.5rem;
+      background: none;
+      border: none;
+      color: hsl(36 5% 40%);
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .cart-close:hover {
+      color: hsl(36 100% 10%);
+    }
+    
+    .cart-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+    
+    .cart-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      padding: 2rem;
+    }
+    
+    .cart-empty svg {
+      color: hsl(36 30% 90%);
+      margin-bottom: 1rem;
+    }
+    
+    .cart-empty h3 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .cart-empty p {
+      margin-bottom: 1.5rem;
+      color: hsl(36 5% 40%);
+    }
+    
+    .cart-empty-button {
+      padding: 0.75rem 1.5rem;
+      background-color: hsl(36 100% 50%);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .cart-empty-button:hover {
+      background-color: hsl(36 100% 45%);
+      transform: translateY(-2px);
+    }
+    
+    .cart-item {
+      display: flex;
+      padding: 1rem 0;
+      border-bottom: 1px solid hsl(36 30% 90%);
+    }
+    
+    .cart-item-image {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    
+    .cart-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .cart-item-details {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .cart-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+    }
+    
+    .cart-item-title {
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .cart-item-remove {
+      padding: 0.25rem;
+      background: none;
+      border: none;
+      color: hsl(36 5% 40%);
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .cart-item-remove:hover {
+      color: hsl(0 100% 50%);
+    }
+    
+    .cart-item-price {
+      font-size: 0.875rem;
+      color: hsl(36 5% 40%);
+      margin-bottom: 0.5rem;
+    }
+    
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+    }
+    
+    .cart-item-quantity button {
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid hsl(36 30% 90%);
+      background: none;
+      color: hsl(36 5% 40%);
+      border-radius: 0.25rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .cart-item-quantity button:hover {
+      background-color: hsl(48 30% 96%);
+    }
+    
+    .cart-item-quantity span {
+      width: 2.5rem;
+      text-align: center;
+      font-weight: 500;
+    }
+    
+    .cart-item-total {
+      margin-left: auto;
+      font-weight: 600;
+    }
+    
+    .cart-footer {
+      padding: 1rem;
+      border-top: 1px solid hsl(36 30% 90%);
+    }
+    
+    .cart-clear {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      background: none;
+      border: none;
+      color: hsl(36 5% 40%);
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .cart-clear:hover {
+      color: hsl(0 100% 50%);
+    }
+    
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .cart-checkout {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: hsl(36 100% 50%);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .cart-checkout:hover {
+      background-color: hsl(36 100% 45%);
+      transform: scale(1.02);
+    }
+    
+    .cart-checkout:active {
+      transform: scale(0.98);
+    }
+    
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      background-color: hsl(160 100% 40%);
+      color: white;
+      z-index: 100;
+      transition: all 0.3s;
+      transform: translateY(1rem);
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .toast.error {
+      background-color: hsl(0 100% 60%);
+    }
+    
+    /* Media Queries */
+    @media (min-width: 640px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+      
+      .hero-description {
+        font-size: 1.25rem;
+      }
+      
+      .about-features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .about-container {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .footer-container {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+      nav {
+        display: block;
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      
+      .mobile-menu {
+        display: block;
+      }
+
+      .mobile-nav {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 1rem;
+        border-top: 1px solid hsl(36 30% 90%);
+        border-bottom: 1px solid hsl(36 30% 90%);
+        z-index: 30;
+        display: none;
+      }
+      
+      .mobile-nav.open {
+        display: block;
+      }
+      
+      .mobile-nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        list-style: none;
+      }
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen">
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="#" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8.027 2.332C5.079 2.662 2.662 5.08 2.332 8.027"/>
+              <path d="M21.668 8.027c-.33-2.947-2.748-5.365-5.695-5.695"/>
+              <path d="M2.332 15.973c.33 2.947 2.748 5.365 5.695 5.695"/>
+              <path d="M15.973 21.668c2.947-.33 5.365-2.748 5.695-5.695"/>
+              <path d="M12.5 7.5a5 5 0 1 0-4.9 8.7"/>
+              <path d="m19 16-3-3"/>
+              <path d="m13 14-3-1 2 4 1.7-2.8"/>
+            </svg>
+            Sweet Buzz Honey
+          </a>
+          
+          <nav>
+            <ul>
+              <li><a href="#" class="active">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#products">Our Products</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+          
+          <div class="flex items-center">
+            <button class="cart-button" id="cart-trigger">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+                <path d="M3 6h18"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+              <span class="cart-count" id="cart-count">0</span>
+            </button>
+            
+            <button class="mobile-menu" id="mobile-menu-trigger">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" x2="20" y1="12" y2="12"/>
+                <line x1="4" x2="20" y1="6" y2="6"/>
+                <line x1="4" x2="20" y1="18" y2="18"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile navigation -->
+      <div class="mobile-nav" id="mobile-nav">
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#products">Our Products</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1498936178812-4b2e558d2937?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Bee farm">
+      </div>
+      
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Pure & Natural<br>Organic Honey</h1>
+          <p class="hero-description">Sustainably harvested from our family-owned bee farm, bringing nature's sweetness directly to your table.</p>
+          <a href="#products" class="hero-button">Shop Our Products</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Filter Section -->
+    <section class="filter-section" id="products">
+      <div class="container">
+        <div class="filter-buttons">
+          <button class="filter-button active" data-category="All">All Products</button>
+          <button class="filter-button" data-category="Honey">Honey</button>
+          <button class="filter-button" data-category="Beeswax">Beeswax</button>
+          <button class="filter-button" data-category="Pollen">Pollen & Propolis</button>
+          <button class="filter-button" data-category="Gifts">Gift Sets</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title" id="category-title">All Products</h2>
+        
+        <div class="product-grid" id="products-container">
+          <!-- Products will be populated here by JavaScript -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-container">
+          <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Bee farmer">
+          </div>
+          
+          <div class="about-content">
+            <h2 class="about-title">Our Story</h2>
+            <p class="about-text">Sweet Buzz Honey Farm started as a small family operation in 2005. What began as a passion project with just two hives has grown into a thriving bee sanctuary with over 200 hives spread across our 50-acre farm.</p>
+            <p class="about-text">We're dedicated to sustainable beekeeping practices that prioritize the health of our bees and the environment. Our approach ensures we harvest only excess honey, leaving plenty for the bees to thrive.</p>
+            
+            <div class="about-features">
+              <div class="feature">
+                <div class="feature-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h3>100% Organic</h3>
+                  <p>Our honey is completely pure, raw, and unfiltered, retaining all natural enzymes and nutrients.</p>
+                </div>
+              </div>
+              
+              <div class="feature">
+                <div class="feature-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h3>Bee Conservation</h3>
+                  <p>We're committed to protecting bee populations through sustainable harvesting practices.</p>
+                </div>
+              </div>
+              
+              <div class="feature">
+                <div class="feature-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                    <line x1="9" x2="9.01" y1="9" y2="9"/>
+                    <line x1="15" x2="15.01" y1="9" y2="9"/>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h3>Local Community</h3>
+                  <p>Supporting local agriculture and providing educational programs about beekeeping.</p>
+                </div>
+              </div>
+              
+              <div class="feature">
+                <div class="feature-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9.5 13.5 5 18l.8.8 4.5-4.5"/>
+                    <path d="M5 18h3v3"/>
+                    <path d="M14.5 10.5 19 6l-.8-.8-4.5 4.5"/>
+                    <path d="M19 6h-3V3"/>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h3>Direct From Farm</h3>
+                  <p>We handle every step of the process, from hive to jar, ensuring quality and freshness.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-section">
+            <h3>Sweet Buzz Honey</h3>
+            <p>Natural honey and bee products from our family farm to your table.</p>
+            <div class="social-links">
+              <a href="#" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </a>
+              <a href="#" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                </svg>
+              </a>
+              <a href="#" class="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#products">Shop</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Products</h3>
+            <ul class="footer-links">
+              <li><a href="#">Raw Honey</a></li>
+              <li><a href="#">Beeswax Candles</a></li>
+              <li><a href="#">Bee Pollen</a></li>
+              <li><a href="#">Propolis Extract</a></li>
+              <li><a href="#">Gift Sets</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <div class="footer-contact">
+              <div class="footer-contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <span>(555) 123-4567</span>
+              </div>
+              <div class="footer-contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <span>info@sweetbuzzhoney.com</span>
+              </div>
+              <div class="footer-contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span>123 Bee Farm Lane, Honeyton, HN 12345</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2023 Sweet Buzz Honey Farm. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Cart Panel -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-panel" id="cart-panel">
+      <div class="cart-header">
+        <div class="cart-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+            <path d="M3 6h18"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <h2>Your Cart</h2>
+          <span id="cart-items-count">(0 items)</span>
+        </div>
+        
+        <button class="cart-close" id="cart-close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="cart-content" id="cart-content">
+        <!-- Cart items will be populated here by JavaScript -->
+      </div>
+      
+      <div class="cart-footer">
+        <button class="cart-clear" id="cart-clear">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h18"/>
+            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+            <line x1="10" x2="10" y1="11" y2="17"/>
+            <line x1="14" x2="14" y1="11" y2="17"/>
+          </svg>
+          <span>Clear Cart</span>
+        </button>
+        
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cart-total-amount">$0.00</span>
+        </div>
+        
+        <button class="cart-checkout" id="cart-checkout">
+          Checkout
+        </button>
+      </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+  </div>
+
+  <script>
+    // Product data
+    const products = [
+      {
+        id: 'wildflower-honey',
+        name: 'Wildflower Honey',
+        price: 12.99,
+        image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        category: 'Honey',
+        description: 'Pure raw honey collected from wildflower meadows, with a rich, complex flavor profile.'
+      },
+      {
+        id: 'clover-honey',
+        name: 'Clover Honey',
+        price: 10.99,
+        image: 'https://images.unsplash.com/photo-1576788168849-c9fdabeec723?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        category: 'Honey',
+        description: 'Light, sweet honey with mild floral notes from clover blossoms.'
+      },
+      {
+        id: 'buckwheat-honey',
+        name: 'Buckwheat Honey',
+        price: 14.99,
+        image: 'https://images.unsplash.com/photo-1501763966092-9aa4ec850e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        category: 'Honey',
+        description: 'Dark, robust honey with a distinctive molasses-like flavor and high antioxidant content.'
+      },
+      {
+        id: 'beeswax-candles',
+        name: 'Beeswax Candles Set',
+        price: 18.99,
+        image: 'https://images.unsplash.com/photo-1606054766656-d82a060a08bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        category: 'Beeswax',
+        description: 'Set of 3 hand-poured 100% pure beeswax candles with a natural honey scent and long burn time.'
+      },
+      {
+        id: 'lip-balm',
+        name: 'Honey Beeswax Lip Balm',
+        price: 5.99,
+        image: 'https://images.unsplash.com/photo-1600207438515-b4fa432a4f9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        category: 'Beeswax',
+        description: 'Moisturizing lip balm made with beeswax, honey, and natural oils. Pack of 2.'
+      },
+      {
+        id: 'bee-pollen',
+        name: 'Fresh Bee Pollen',
+        price: 15.99,
+        image: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        category: 'Pollen',
+        description: 'Raw bee pollen granules, packed with proteins, vitamins, and minerals. Great as a nutritional supplement.'
+      },
+      {
+        id: 'propolis-tincture',
+        name: 'Propolis Tincture',
+        price: 19.99,
+        image: 'https://images.unsplash.com/photo-1563705883268-eb58ab6f505d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        category: 'Pollen',
+        description: 'Natural propolis extract known for its antimicrobial properties. Supports immune health.'
+      },
+      {
+        id: 'honey-gift-set',
+        name: 'Honey Sampler Gift Set',
+        price: 34.99,
+        image: 'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        category: 'Gifts',
+        description: 'Gift box with 4 premium honey varieties: Wildflower, Clover, Buckwheat, and Orange Blossom.'
+      },
+      {
+        id: 'bee-lovers-basket',
+        name: 'Bee Lover\'s Basket',
+        price: 49.99,
+        image: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        category: 'Gifts',
+        description: 'Deluxe gift basket featuring honey, beeswax candles, honey soap, and a wooden honey dipper.'
+      }
+    ];
+
+    // DOM elements
+    const productsContainer = document.getElementById('products-container');
+    const categoryTitle = document.getElementById('category-title');
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const cartPanel = document.getElementById('cart-panel');
+    const cartOverlay = document.getElementById('cart-overlay');
+    const cartContent = document.getElementById('cart-content');
+    const cartTrigger = document.getElementById('cart-trigger');
+    const cartClose = document.getElementById('cart-close');
+    const cartCount = document.getElementById('cart-count');
+    const cartItemsCount = document.getElementById('cart-items-count');
+    const cartTotalAmount = document.getElementById('cart-total-amount');
+    const cartClear = document.getElementById('cart-clear');
+    const cartCheckout = document.getElementById('cart-checkout');
+    const toast = document.getElementById('toast');
+    const mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    // State
+    let cart = [];
+    let activeCategory = 'All';
+
+    // Initialize
+    displayProducts(activeCategory);
+    updateCartUI();
+
+    // Filter products by category
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Update category and display products
+        activeCategory = button.dataset.category;
+        categoryTitle.textContent = activeCategory === 'All' ? 'All Products' : activeCategory;
+        displayProducts(activeCategory);
+      });
+    });
+
+    // Toggle mobile menu
+    mobileMenuTrigger.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+
+    // Display products based on category
+    function displayProducts(category) {
+      // Clear products container
+      productsContainer.innerHTML = '';
+      
+      // Filter products
+      const filteredProducts = category === 'All' 
+        ? products 
+        : products.filter(product => product.category === category);
+      
+      // Create product cards
+      filteredProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        
+        productCard.innerHTML = `
+          <div class="product-image">
+            <img src="${product.image}" alt="${product.name}" loading="lazy">
+          </div>
+          <div class="product-info">
+            <div class="product-header">
+              <h3 class="product-title">${product.name}</h3>
+              <span class="product-price">$${product.price.toFixed(2)}</span>
+            </div>
+            <p class="product-description">${product.description}</p>
+            <button class="product-button" data-id="${product.id}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+                <path d="M3 6h18"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        `;
+        
+        productsContainer.appendChild(productCard);
+        
+        // Add event listener to the Add to Cart button
+        const addToCartButton = productCard.querySelector('.product-button');
+        addToCartButton.addEventListener('click', () => {
+          addToCart(product.id);
+        });
+      });
+    }
+
+    // Cart functions
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+      
+      // Check if product already in cart
+      const existingItemIndex = cart.findIndex(item => item.product.id === productId);
+      
+      if (existingItemIndex !== -1) {
+        // Increase quantity if already in cart
+        cart[existingItemIndex].quantity++;
+      } else {
+        // Add new item to cart
+        cart.push({ product, quantity: 1 });
+      }
+      
+      updateCartUI();
+      showToast(`Added ${product.name} to cart`);
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.product.id !== productId);
+      updateCartUI();
+    }
+
+    function increaseQuantity(productId) {
+      const item = cart.find(item => item.product.id === productId);
+      if (item) {
+        item.quantity++;
+        updateCartUI();
+      }
+    }
+
+    function decreaseQuantity(productId) {
+      const itemIndex = cart.findIndex(item => item.product.id === productId);
+      
+      if (itemIndex !== -1) {
+        if (cart[itemIndex].quantity > 1) {
+          // Decrease quantity
+          cart[itemIndex].quantity--;
+        } else {
+          // Remove item if quantity becomes 0
+          cart.splice(itemIndex, 1);
+        }
+        
+        updateCartUI();
+      }
+    }
+
+    function clearCart() {
+      cart = [];
+      updateCartUI();
+      showToast('Cart has been cleared');
+    }
+
+    function handleCheckout() {
+      if (cart.length === 0) {
+        showToast('Your cart is empty!', 'error');
+        return;
+      }
+      
+      showToast('Checkout completed! Thank you for your purchase.');
+      cart = [];
+      updateCartUI();
+      closeCart();
+    }
+
+    // Update cart UI
+    function updateCartUI() {
+      // Update cart count
+      const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+      cartCount.textContent = itemCount;
+      cartItemsCount.textContent = `(${itemCount} item${itemCount !== 1 ? 's' : ''})`;
+      
+      // Calculate cart total
+      const cartTotal = cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+      cartTotalAmount.textContent = `$${cartTotal.toFixed(2)}`;
+      
+      // Update cart content
+      if (cart.length === 0) {
+        // Display empty cart message
+        cartContent.innerHTML = `
+          <div class="cart-empty">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+              <path d="M3 6h18"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <h3>Your cart is empty</h3>
+            <p>Add some products to your cart and they will appear here</p>
+            <button class="cart-empty-button" id="continue-shopping">Continue Shopping</button>
+          </div>
+        `;
+        
+        // Add event listener to continue shopping button
+        const continueShoppingButton = document.getElementById('continue-shopping');
+        continueShoppingButton.addEventListener('click', closeCart);
+      } else {
+        // Display cart items
+        cartContent.innerHTML = '';
+        
+        cart.forEach(item => {
+          const cartItem = document.createElement('div');
+          cartItem.className = 'cart-item';
+          
+          cartItem.innerHTML = `
+            <div class="cart-item-image">
+              <img src="${item.product.image}" alt="${item.product.name}">
+            </div>
+            <div class="cart-item-details">
+              <div class="cart-item-header">
+                <h3 class="cart-item-title">${item.product.name}</h3>
+                <button class="cart-item-remove" data-id="${item.product.id}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"/>
+                    <path d="m6 6 12 12"/>
+                  </svg>
+                </button>
+              </div>
+              <p class="cart-item-price">$${item.product.price.toFixed(2)}</p>
+              <div class="cart-item-quantity">
+                <button class="decrease-quantity" data-id="${item.product.id}">-</button>
+                <span>${item.quantity}</span>
+                <button class="increase-quantity" data-id="${item.product.id}">+</button>
+                <div class="cart-item-total">$${(item.product.price * item.quantity).toFixed(2)}</div>
+              </div>
+            </div>
+          `;
+          
+          cartContent.appendChild(cartItem);
+          
+          // Add event listeners
+          const removeButton = cartItem.querySelector('.cart-item-remove');
+          removeButton.addEventListener('click', () => {
+            removeFromCart(item.product.id);
+          });
+          
+          const decreaseButton = cartItem.querySelector('.decrease-quantity');
+          decreaseButton.addEventListener('click', () => {
+            decreaseQuantity(item.product.id);
+          });
+          
+          const increaseButton = cartItem.querySelector('.increase-quantity');
+          increaseButton.addEventListener('click', () => {
+            increaseQuantity(item.product.id);
+          });
+        });
+      }
+    }
+
+    // Show toast notification
+    function showToast(message, type = 'success') {
+      toast.textContent = message;
+      toast.className = type === 'success' ? 'toast show' : 'toast show error';
+      
+      setTimeout(() => {
+        toast.className = 'toast';
+      }, 3000);
+    }
+
+    // Toggle cart
+    function openCart() {
+      cartPanel.classList.add('open');
+      cartOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+
+    function closeCart() {
+      cartPanel.classList.remove('open');
+      cartOverlay.classList.remove('open');
+      document.body.style.overflow = ''; // Re-enable scrolling
+    }
+
+    // Event listeners
+    cartTrigger.addEventListener('click', openCart);
+    cartClose.addEventListener('click', closeCart);
+    cartOverlay.addEventListener('click', closeCart);
+    cartClear.addEventListener('click', clearCart);
+    cartCheckout.addEventListener('click', handleCheckout);
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        // Close mobile menu if open
+        mobileNav.classList.remove('open');
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
